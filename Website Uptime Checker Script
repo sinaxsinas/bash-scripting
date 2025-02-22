@@ -1,0 +1,8 @@
+#!/bin/bash
+url="https://example.com"
+
+if curl -s --head $url | grep "200 OK" > /dev/null; then 
+  echo "$url is up."
+else 
+  echo "$url is down." 
+fi 
