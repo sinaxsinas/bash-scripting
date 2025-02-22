@@ -1,0 +1,20 @@
+#!/bin/bash
+manage_user() { 
+  username=$1  
+  action=$2 
+
+ if [ "$action" == "add" ]; then 
+   sudo useradd -m $username 
+   echo "User $username added." 
+ elif [ "$action" == "remove" ]; then    
+   sudo userdel -r $username  
+   echo "User $username removed." 
+ else
+   echo "Invalid action. Use 'add' or 'remove'."  
+  fi
+} 
+ if [ -z "$1" ] || [ -z "$2" ]; then 
+   echo "Usage: $0 <username> <add|remove>"
+else 
+   manage_user $1 $2 
+fi 
