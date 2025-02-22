@@ -1,0 +1,8 @@
+#!/bin/bash
+host="google.com"
+
+if ping -c 1 $host > /dev/null; then
+  echo "$host is reachable."
+else
+  echo "$host is unreachable." 
+fi 
