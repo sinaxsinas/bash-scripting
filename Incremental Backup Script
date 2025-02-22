@@ -1,0 +1,15 @@
+#!/bin/bash
+src_dir="/path/to/source" 
+backup_dir="/path/to/backup"
+timestamp=$(date +%Y%m%d_%H%M%S) 
+backup_file="$backup_dir/backup_incremental_$timestamp.tar.gz" 
+last_backup="$backup_dir/last_backup.txt" 
+if [ -f "$last_backup" ]; then 
+  find $src_dir -type f -newer $last_backup > changed_files.txt 
+else   
+  find $src_dir -type f > changed_files.txt
+fi  
+
+tar -czf $backup_file -T changed_files.txt
+touch $last_backup 
+echo "Incremental backup completed: $backup_file" 
