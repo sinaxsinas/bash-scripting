@@ -1,0 +1,9 @@
+#!/bin/bash 
+ echo "System Information:" 
+uname -a 
+ echo "CPU Information:" 
+lscpu 
+ echo "Memory Information:"
+free -h 
+ echo "Disk Information:"
+df -h 
